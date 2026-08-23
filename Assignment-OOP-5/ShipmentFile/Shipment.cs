@@ -106,6 +106,10 @@ namespace Assignment_oop_04.ShipmentFile
         {
             return (Shipment)this.MemberwiseClone();
         }
+        public Shipment ShallowCopy()
+        {
+            return (Shipment)this.MemberwiseClone();
+        }
     }
 }   
 

@@ -94,6 +94,14 @@ namespace Assignment_OOP_5
             // If a declared partial method has no implementation, the compiler will remove the method declaration and any calls to it from the compiled code.
             #endregion
             #endregion
+
+            #region Part02
+            Shipment Sh01 = new StandardShipment("cacac", "csaasc", 100.0m, new DeliveryAddress("acdavv", "ascsa", 15), 1500);
+            //Shipment shipment02 = shipment01.CopyShipment();
+            //Console.WriteLine(ReferenceEquals(shipment01,shipment02));
+            //Shipment Sh02 = Sh01.ShallowCopy();
+            //Console.WriteLine(ReferenceEquals(Sh02.Destination, Sh01.Destination));
+            #endregion
         }
     }
 }

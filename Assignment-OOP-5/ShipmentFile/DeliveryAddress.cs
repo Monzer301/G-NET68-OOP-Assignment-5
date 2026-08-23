@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Assignment_oop_04.ShipmentFile
 {
-    internal struct DeliveryAddress
+    internal class DeliveryAddress
     {
         public string City;
         public string Street;
