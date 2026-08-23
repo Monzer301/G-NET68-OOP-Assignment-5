@@ -6,7 +6,7 @@ namespace Assignment_oop_04.ShipmentFile
 {
     internal abstract class Shipment
     {
-
+        public static int TotalShipmentsCreated = 0;
         protected string trackingCode;
         protected string description;
         protected decimal weight;
@@ -70,6 +70,7 @@ namespace Assignment_oop_04.ShipmentFile
             Weight = 1;
             DeliveryFee = 50;
             Destination = new DeliveryAddress("Unknown", "Unknown", 0);
+            TotalShipmentsCreated++;
         }
         public void UpdateShipmentWeight(decimal newWeight)
         {
@@ -92,6 +93,7 @@ namespace Assignment_oop_04.ShipmentFile
             Weight = weight;
             DeliveryFee = deliveryFee;
             Destination = destination;
+            TotalShipmentsCreated++;
         }
 
         public void UpdateDeliveryFee(decimal newFee)
@@ -104,11 +106,25 @@ namespace Assignment_oop_04.ShipmentFile
         public abstract void PrintShipment();
        public Shipment CopyShipment()
         {
+            TotalShipmentsCreated++;
             return (Shipment)this.MemberwiseClone();
         }
         public Shipment ShallowCopy()
         {
+            TotalShipmentsCreated++;
             return (Shipment)this.MemberwiseClone();
+        }
+
+        public Shipment DeepCopy()
+        {
+            Shipment Copy=(Shipment)this.MemberwiseClone();
+            Copy.Destination=new DeliveryAddress(
+                this.Destination.City,
+                this.Destination.Street,
+                this.Destination.BuildingNumber
+                );
+            TotalShipmentsCreated++;
+            return Copy;
         }
     }
 }   

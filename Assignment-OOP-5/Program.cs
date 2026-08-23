@@ -98,9 +98,13 @@ namespace Assignment_OOP_5
             #region Part02
             Shipment Sh01 = new StandardShipment("cacac", "csaasc", 100.0m, new DeliveryAddress("acdavv", "ascsa", 15), 1500);
             //Shipment shipment02 = shipment01.CopyShipment();
-            //Console.WriteLine(ReferenceEquals(shipment01,shipment02));
+            //Console.WriteLine(ReferenceEquals(Sh01, Sh02));
             //Shipment Sh02 = Sh01.ShallowCopy();
             //Console.WriteLine(ReferenceEquals(Sh02.Destination, Sh01.Destination));
+            Shipment Sh02 = Sh01.DeepCopy();
+            Console.WriteLine(ReferenceEquals(Sh02.Destination, Sh01.Destination));
+            Console.WriteLine(ReferenceEquals(Sh01, Sh02));
+            Console.WriteLine(Shipment.TotalShipmentsCreated);
             #endregion
         }
     }
