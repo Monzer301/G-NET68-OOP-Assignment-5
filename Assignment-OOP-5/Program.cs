@@ -1,5 +1,5 @@
 ﻿using System.Reflection.Metadata;
-using Assignment_oop_04.ShipmentFile;
+using Assignment_OOP_5.ShipmentFile;
 namespace Assignment_OOP_5
 {
     internal class Program
@@ -95,17 +95,49 @@ namespace Assignment_OOP_5
             #endregion
             #endregion
 
-            #region Part02
-            Shipment Sh01 = new StandardShipment("cacac", "csaasc", 100.0m, new DeliveryAddress("acdavv", "ascsa", 15), 1500);
-            //Shipment shipment02 = shipment01.CopyShipment();
-            //Console.WriteLine(ReferenceEquals(Sh01, Sh02));
-            //Shipment Sh02 = Sh01.ShallowCopy();
-            //Console.WriteLine(ReferenceEquals(Sh02.Destination, Sh01.Destination));
-            Shipment Sh02 = Sh01.DeepCopy();
-            Console.WriteLine(ReferenceEquals(Sh02.Destination, Sh01.Destination));
-            Console.WriteLine(ReferenceEquals(Sh01, Sh02));
-            Console.WriteLine(Shipment.TotalShipmentsCreated);
-            #endregion
+
+            DeliveryUtilities.PrintSystemTitle();
+
+            DeliveryAddress address = new DeliveryAddress("CityA", "Main St", 10);
+            StandardShipment shipment01 = new StandardShipment("SH001", "Books", 3m, address, 50m);
+
+            Shipment shipmentRef = shipment01;
+            Console.WriteLine("-- Reference Assignment Demonstration --");
+            shipmentRef.Description = "Books - Updated via Ref";
+            Console.WriteLine("shipment1.Description: " + shipment01.Description);
+            Console.WriteLine("shipmentRef.Description: " + shipmentRef.Description);
+
+            Console.WriteLine("\n-- Shallow Copy Demonstration --");
+            Shipment shallow = shipment01.ShallowCopy();
+            Console.WriteLine("Before change: shipment1.Destination.City = " + shipment01.Destination.City);
+            shallow.Destination.City = "City-Shallow"; 
+            Console.WriteLine("After change: shipment1.Destination.City = " + shipment01.Destination.City);
+
+            Console.WriteLine("\n-- Deep Copy Demonstration --");
+            Shipment deep = shipment01.DeepCopy();
+            Console.WriteLine("Before change: shipment1.Destination.City = " + shipment01.Destination.City);
+            deep.Destination.City = "City-Deep"; /
+            Console.WriteLine("After change: shipment1.Destination.City = " + shipment01.Destination.City);
+            Console.WriteLine("deep.Destination.City = " + deep.Destination.City);
+
+            Console.WriteLine("\n-- Static Shipment Counter --");
+            Console.WriteLine("Total shipments created: " + Shipment.TotalShipmentsCreated);
+
+            Console.WriteLine("\n-- ShipmentExtensions Demonstration --");
+            Console.WriteLine(shipment01.GetSummary());
+            Console.WriteLine("IsDelivered: " + shipment01.IsDelivered());
+
+            Console.WriteLine("\n-- Partial Method (Tracking) Demonstration --");
+            shipment01.UpdateTrackingStatus("Out For Delivery");
+            shipment01.UpdateTrackingStatus("Delivered");
+            Console.WriteLine("IsDelivered after update: " + shipment01.IsDelivered());
+
+            var center = new DeliveryCenter();
+            center.AddShipment(shipment01);
+            center.AddShipment(shallow);
+            center.AddShipment(deep);
+            Console.WriteLine("\n-- All Shipments in Delivery Center --");
+            center.PrintAllShipments();
         }
     }
 }

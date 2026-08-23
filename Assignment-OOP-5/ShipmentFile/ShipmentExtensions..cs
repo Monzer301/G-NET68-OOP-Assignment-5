@@ -1,5 +1,4 @@
-﻿using Assignment_oop_04.ShipmentFile;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,8 +8,30 @@ namespace Assignment_OOP_5.ShipmentFile
     {
         public static string GetSummary(this Shipment shipment)
         {
-            return $"{shipment.TrackingCode} | {shipment.GetType().Name} | {shipment.Weight} KG";
+            // Tracking status may be provided by shipment.GetTrackingStatus() if available
+            string status = null;
+            try
+            {
+                status = shipment.GetTrackingStatus();
+            }
+            catch
+            {
+                status = "Unknown";
+            }
+
+            return $"{shipment.TrackingCode} | {shipment.GetType().Name} | {shipment.Weight} KG | {status}";
         }
-       
+
+        public static bool IsDelivered(this Shipment shipment)
+        {
+            try
+            {
+                return string.Equals(shipment.GetTrackingStatus(), "Delivered", StringComparison.OrdinalIgnoreCase);
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

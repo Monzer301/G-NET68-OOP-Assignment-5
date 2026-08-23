@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Assignment_oop_04.ShipmentFile
+namespace Assignment_OOP_5.ShipmentFile
 {
-    internal abstract class Shipment
+    internal abstract partial class Shipment
     {
         public static int TotalShipmentsCreated;
         protected string trackingCode;
@@ -135,6 +135,10 @@ namespace Assignment_oop_04.ShipmentFile
         public static int GetTotalShipmentsCreated()
         {
             return TotalShipmentsCreated;
+        }
+        partial void OnTrackingStatusChanged(string newStatus)
+        {
+            Console.WriteLine($"Tracking status changed to: {newStatus}");
         }
     }
 }   
