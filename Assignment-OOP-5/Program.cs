@@ -1,4 +1,6 @@
-﻿namespace Assignment_OOP_5
+﻿using System.Reflection.Metadata;
+
+namespace Assignment_OOP_5
 {
     internal class Program
     {
@@ -60,6 +62,20 @@
             //d) What is a static class? Can you create an object from a static class?
             // A static class is a class that can only contain static members and cannot be instantiated. It is used to group related static methods and fields together.
             // You cannot create an object from a static class because it does not have any instance members or constructors. 
+            #endregion
+
+            #region Q4 Extension Methods
+            //a) What is an Extension Method?
+            // An extension method is a special kind of static method that allows you to "add" new methods to existing types without modifying the original type or creating a new derived type.
+            //---------------------------------------------
+            // b) What keyword must be used in the first parameter of an extension method ?
+            // The first parameter of an extension method must use the "this" keyword, followed by the type that you want to extend. This indicates that the method is an extension method for that type.
+            //---------------------------------------------
+            //c) Where must an extension method be declared?
+            // An extension method must be declared in a static class and must be defined as a static method with the "this" keyword as the first parameter.
+            //---------------------------------------------
+            //d) Can an extension method access private members of the class it extends?
+            // No, an extension method cannot access private members of the class it extends. It can only access public and protected members of the class, as well as any other accessible members based on the visibility rules of the language.
             #endregion
             #endregion
         }
