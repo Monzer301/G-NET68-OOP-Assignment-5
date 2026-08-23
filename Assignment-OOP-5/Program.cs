@@ -77,6 +77,22 @@ namespace Assignment_OOP_5
             //d) Can an extension method access private members of the class it extends?
             // No, an extension method cannot access private members of the class it extends. It can only access public and protected members of the class, as well as any other accessible members based on the visibility rules of the language.
             #endregion
+
+            #region Q5 Partial Classes and Partial Methods
+            //a) What is a Partial Class?
+            // A partial class is a class that can be split into multiple files, allowing different parts of the class to be defined in separate files.
+            // This can be useful for organizing code, especially in large projects or when working with auto-generated code.
+            //---------------------------------------------
+            //b) Why would a developer split one class into multiple files?
+            // A developer might split a class into multiple files to improve code organization, maintainability, and readability.
+            //---------------------------------------------
+            //c) What is a Partial Method?
+            // A partial method is a method that can be defined in one part of a partial class and implemented in another part of the same partial class.
+            // This allows for more flexible code organization, especially when working with auto-generated code.
+            //---------------------------------------------
+            //d) What happens if a declared partial method has no implementation?
+            // If a declared partial method has no implementation, the compiler will remove the method declaration and any calls to it from the compiled code.
+            #endregion
             #endregion
         }
     }
