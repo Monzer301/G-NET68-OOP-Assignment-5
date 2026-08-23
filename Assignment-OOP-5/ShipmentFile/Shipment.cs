@@ -6,7 +6,7 @@ namespace Assignment_oop_04.ShipmentFile
 {
     internal abstract class Shipment
     {
-        public static int TotalShipmentsCreated = 0;
+        public static int TotalShipmentsCreated;
         protected string trackingCode;
         protected string description;
         protected decimal weight;
@@ -24,6 +24,7 @@ namespace Assignment_oop_04.ShipmentFile
                 }
             }
         }
+
         public string Description
         {
             get { return description; }
@@ -125,6 +126,15 @@ namespace Assignment_oop_04.ShipmentFile
                 );
             TotalShipmentsCreated++;
             return Copy;
+        }
+         static Shipment()
+        {
+            TotalShipmentsCreated = 0;
+            Console.WriteLine("Shipment System Initialized");
+        }
+        public static int GetTotalShipmentsCreated()
+        {
+            return TotalShipmentsCreated;
         }
     }
 }   
